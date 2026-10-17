@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA — Placement Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a class="brand" href="/">
+        <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.4 5.4-3-3L4.3 16"/></svg>
+        </span>
+        Placement Predictor
+    </a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/data_loading">Data Loading</a>
+        <a href="/eda" class="active">EDA</a>
+        <a href="/preprocessing">Preprocessing</a>
+        <a href="/linear_regression">Linear Regression</a>
+    </div>
+</nav>
+
+<div class="page">
+
+    <h1>Exploratory Data Analysis</h1>
+
+    <div class="section">
+        <h2>Dataset Information</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Rows</h3>
+                <h2>{{ rows }}</h2>
+            </div>
+            <div class="card">
+                <h3>Columns</h3>
+                <h2>{{ columns_count }}</h2>
+            </div>
+            <div class="card">
+                <h3>Duplicate Rows</h3>
+                <h2>{{ duplicates }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Column Names</h2>
+        <ul class="feature-list">
+            {% for column in column_names %}
+            <li>{{ column }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Column Information</h2>
+        <div class="tables">
+            <div>
+                <h3>Data Types</h3>
+                <div class="table-scroll">{{ dtypes|safe }}</div>
+            </div>
+            <div>
+                <h3>Missing Values</h3>
+                <div class="table-scroll">{{ missing_values|safe }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Descriptive Statistics</h2>
+        <div class="table-scroll">{{ statistics|safe }}</div>
+    </div>
+
+    <div class="section">
+        <h2>Visualizations</h2>
+        <div class="graphs">
+            <div class="graph">
+                <h3>Correlation Heatmap</h3>
+                <img src="{{ url_for('static', filename='plots/heatmap.png') }}">
+            </div>
+            <div class="graph">
+                <h3>CGPA Distribution</h3>
+                <img src="{{ url_for('static', filename='plots/CGPA_histogram.png') }}">
+            </div>
+            <div class="graph">
+                <h3>CGPA Box Plot</h3>
+                <img src="{{ url_for('static', filename='plots/CGPA_boxplot.png') }}">
+            </div>
+            <div class="graph">
+                <h3>Placement Status Distribution</h3>
+                <img src="{{ url_for('static', filename='plots/PlacementStatus_countplot.png') }}">
+            </div>
+            <div class="graph wide">
+                <h3>CGPA vs Coding Test Score</h3>
+                <img src="{{ url_for('static', filename='plots/CGPA_CodingTestScore_scatter.png') }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Placement Predictor — ML Module Project (25SC2107E)</div>
+
+</div>
+
+</body>
+
+</html>

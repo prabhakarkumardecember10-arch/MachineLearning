@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression — Placement Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a class="brand" href="/">
+        <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.4 5.4-3-3L4.3 16"/></svg>
+        </span>
+        Placement Predictor
+    </a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/data_loading">Data Loading</a>
+        <a href="/eda">EDA</a>
+        <a href="/preprocessing">Preprocessing</a>
+        <a href="/linear_regression" class="active">Linear Regression</a>
+    </div>
+</nav>
+
+<div class="page">
+
+    <h1>Linear Regression Results</h1>
+
+    <div class="section">
+        <h2>Model Metrics</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Mean Squared Error</h3>
+                <div class="value">{{ mse }}</div>
+            </div>
+            <div class="card">
+                <h3>Root Mean Squared Error</h3>
+                <div class="value">{{ rmse }}</div>
+            </div>
+            <div class="card">
+                <h3>Mean Absolute Error</h3>
+                <div class="value">{{ mae }}</div>
+            </div>
+            <div class="card">
+                <h3>R² Score</h3>
+                <div class="value">{{ r2 }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Model Performance</h2>
+        <p class="description">
+            The Linear Regression model explains approximately
+            <strong>{{ r2_percent }}%</strong> of the variation in the
+            placement target.
+        </p>
+    </div>
+
+    <div class="footer">Placement Predictor — ML Module Project (25SC2107E)</div>
+
+</div>
+
+</body>
+
+</html>
